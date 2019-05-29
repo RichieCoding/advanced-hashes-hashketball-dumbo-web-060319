@@ -172,8 +172,8 @@ end
 def player_stats(name)
   game_hash.each do |location, team_data|
     team_data.each do |attribute, data|
-      game_hash[location][:players].each do |key, data|
-        if key == name
+      game_hash[location][:players].each do |player, data|
+        if player == name
           return data
         end
       end
@@ -185,10 +185,10 @@ def big_shoe_rebounds
   shoe_sizes = 0
   rebounds = 0
   game_hash.each do |location, team_data|
-    team_data[:players].each do |player, stats|
-      if stats[:shoe] > shoe_sizes
-        shoe_sizes = stats[:shoe]
-        rebounds = stats[:rebounds]
+    team_data[:players].each do |player, data|
+      if data[:shoe] > shoe_sizes
+        shoe_sizes = data[:shoe]
+        rebounds = data[:rebounds]
       end
     end
   end
